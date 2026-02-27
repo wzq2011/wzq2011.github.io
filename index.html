@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WZQ Photos 航空摄影图库，欢迎每一位航空爱好者与技术伙伴加入">
+    <meta name="description" content="WZQ Photos 航空摄影图库，欢迎每一位航空爱好者加入">
     <meta name="author" content="WZQ Photos">
-    <meta name="copyright" content="WZQ Photos">
     <title>WZQ Photos - 航空摄影图库</title>
     <style>
         * {
@@ -16,18 +15,13 @@
 
         html, body {
             width: 100%;
-            height: 100%;
+            min-height: 100vh;
             font-family: "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
-        }
-
-        body {
-            background-color: #1A3D6F;
-            color: #ffffff;
+            background: #1A3D6F;
+            color: #fff;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 20px;
             line-height: 1.6;
         }
@@ -35,81 +29,88 @@
         .container {
             max-width: 720px;
             width: 100%;
+            text-align: center;
         }
 
         .plane-icon {
-            font-size: 64px;
-            margin-bottom: 24px;
+            font-size: 60px;
+            margin-bottom: 20px;
         }
 
         .site-title {
-            font-size: 46px;
+            font-size: 36px;
             font-weight: 700;
+            margin-bottom: 10px;
             letter-spacing: 1px;
-            margin-bottom: 8px;
         }
 
-        .site-subtitle {
-            font-size: 19px;
-            color: #e0e0e0;
-            margin-bottom: 24px;
-        }
-
-        .welcome-text {
+        .site-sub {
             font-size: 18px;
+            color: #e0e0e0;
+            margin-bottom: 35px;
+        }
+
+        .welcome {
+            font-size: 20px;
             color: #FFE066;
-            margin-bottom: 32px;
+            margin-bottom: 30px;
+            font-weight: 500;
         }
 
         .desc {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 14px;
+            font-size: 17px;
+            margin-bottom: 16px;
+            padding: 0 10px;
         }
 
-        .founder-info {
+        .founder {
             font-size: 18px;
-            color: #c8d8e8;
-            margin: 16px 0;
+            margin: 30px 0;
+            color: #d0e0ff;
         }
 
         .build-info {
-            font-size: 17px;
-            color: #b0c0d0;
-            margin-bottom: 32px;
+            font-size: 15px;
+            color: #c0c8e0;
+            margin-bottom: 30px;
         }
 
         .contact-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+            margin-top: 35px;
         }
 
         .contact-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
         .contact-detail {
-            font-size: 18px;
-            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 6px;
         }
 
         .contact-tip {
-            font-size: 17px;
+            font-size: 16px;
             color: #FFE066;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
-            .site-title {
-                font-size: 36px;
-            }
             .plane-icon {
-                font-size: 54px;
+                font-size: 50px;
+            }
+            .site-title {
+                font-size: 30px;
+            }
+            .site-sub {
+                font-size: 16px;
+            }
+            .welcome {
+                font-size: 18px;
+            }
+            .desc {
+                font-size: 16px;
             }
         }
     </style>
@@ -119,26 +120,24 @@
 <div class="container">
     <div class="plane-icon">✈️</div>
     <h1 class="site-title">WZQ Photos</h1>
-    <div class="site-subtitle">航空摄影图库 · 网站正在筹备中</div>
+    <div class="site-sub">航空摄影图库 · 网站正在筹备中</div>
 
-    <div class="welcome-text">你怎么发现这个网站的？既然你找到了这里，欢迎加入我们！</div>
+    <div class="welcome">你怎么发现这里的？既然来了，欢迎加入我们！</div>
 
-    <div class="desc">未来将开放照片上传、审核、展示等功能，项目预计需要一年左右时间完成上线。</div>
-    <div class="desc">本人是建站新手小白，目前寻找志同道合、愿意义务参与的技术伙伴，一起共同建设。</div>
-    <div class="desc">同时也欢迎愿意担任网站审核、管理员的朋友加入，没有经验也没关系。</div>
-    <div class="desc">这里属于每一位航空爱好者，期待愿意同行的你。</div>
+    <div class="desc">未来将开放照片上传、审核、展示、浏览等完整功能。</div>
+    <div class="desc">整个项目预计需要一年左右的时间逐步完成。</div>
+    <div class="desc">本人是建站新手，正在寻找愿意无偿帮忙的技术伙伴。</div>
+    <div class="desc">同时也欢迎想担任网站审核、管理员的朋友一起参与。</div>
+    <div class="desc">这里属于每一位航空爱好者，期待与你同行。</div>
 
-    <div class="founder-info">我是本站站长、创始人，期待与你相遇。</div>
-
-    <div class="build-info">本网站于 2026 年 2 月 27 日开始制作</div>
+    <div class="founder">我是本站站长，期待与你相遇。</div>
+    <div class="build-info">网站创建于 2026 年 2 月 27 日</div>
 
     <div class="contact-block">
         <div class="contact-title">联系方式</div>
-        <div class="contact-detail">
-            微信：18519049638<br>
-            邮箱：3810421790@qq.com
-        </div>
-        <div class="contact-tip">联系时请备注：WZQPhotos+称呼</div>
+        <div class="contact-detail">微信：18519049638</div>
+        <div class="contact-detail">邮箱：3810421790@qq.com</div>
+        <div class="contact-tip">联系时请备注：WZQPhotos + 你的称呼</div>
     </div>
 </div>
 
