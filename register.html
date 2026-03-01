@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户注册 - WZQ Photos</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+  body { background:#FFF3E0; min-height:100vh; display:flex; flex-direction:column; }
+  .header { background:#FF9800; color:white; padding:18px 30px; display:flex; justify-content:space-between; align-items:center; }
+  .logo { font-size:24px; font-weight:bold; }
+  .form-box { max-width:500px; margin:40px auto; background:white; padding:30px; border-radius:12px; }
+  .form-item { margin-bottom:18px; }
+  label { display:block; margin-bottom:6px; }
+  input { width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-size:16px; }
+  button { width:100%; padding:12px; background:#4CAF50; color:white; border:none; border-radius:6px; font-size:16px; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo">WZQ Photos</div>
+</div>
+
+<div class="form-box">
+  <div class="form-item">
+    <label>用户名</label>
+    <input type="text" required>
+  </div>
+  <div class="form-item">
+    <label>邮箱</label>
+    <input type="email" required>
+  </div>
+  <div class="form-item">
+    <label>密码</label>
+    <input type="password" required>
+  </div>
+  <button>提交注册</button>
+</div>
+</body>
+</html>
