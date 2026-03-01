@@ -13,13 +13,14 @@
   }
 
   body {
-    background-color: #FFF3E0; /* 浅橘色底，柔和好看 */
+    background: #FFF3E0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* 顶部导航 */
-  .top-bar {
-    background-color: #FF9800; /* 橘色导航 */
+  .header {
+    background: #FF9800;
     color: white;
     padding: 18px 30px;
     display: flex;
@@ -32,179 +33,90 @@
     font-weight: bold;
   }
 
-  .nav-btns {
+  .nav {
     display: flex;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .nav-btns button {
+  .nav a {
     padding: 10px 16px;
-    border: none;
     border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
     color: white;
+    text-decoration: none;
+    font-size: 14px;
   }
 
-  .btn-upload {
-    background: #FF5722;
-  }
-  .btn-rules {
-    background: #FFA726;
-  }
-  .btn-register {
-    background: #4CAF50;
-  }
+  .upload { background: #FF5722; }
+  .rules { background: #FFA726; }
+  .register { background: #4CAF50; }
 
-  /* 内容区域 */
-  .content {
-    padding: 40px 20px;
+  .container {
+    flex: 1;
     max-width: 700px;
     margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
   }
 
-  /* 第一句：航空图库 */
-  .title-desc {
-    font-size: 22px;
+  .title {
+    font-size: 24px;
     font-weight: bold;
-    text-align: center;
     color: #E65100;
     margin-bottom: 10px;
   }
 
-  /* 招募语 + 联系方式 */
-  .join-us {
+  .contact {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 20px 0;
+    color: #333;
+  }
+
+  .footer {
+    background: #333;
+    color: #ccc;
+    padding: 14px;
     text-align: center;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 30px;
-    line-height: 1.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
-  /* 面板 */
-  .panel {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    display: none;
-    margin-bottom: 20px;
-  }
-
-  .panel h3 {
-    margin-bottom: 16px;
-    color: #333;
-  }
-
-  /* 表单样式 */
-  .form-item {
-    margin-bottom: 18px;
-  }
-  .form-item label {
-    display: block;
-    margin-bottom: 6px;
-    color: #333;
-  }
-  .form-item input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-  }
-  .submit-btn {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
+  .footer svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
   }
 </style>
 </head>
 
 <body>
 
-<!-- 顶部导航 -->
-<div class="top-bar">
+<div class="header">
   <div class="logo">WZQ Photos</div>
-  <div class="nav-btns">
-    <button class="btn-upload" id="uploadBtn">上传图片</button>
-    <button class="btn-rules" id="rulesBtn">传图规则</button>
-    <button class="btn-register" id="registerBtn">用户注册</button>
+  <div class="nav">
+    <a href="upload.html" class="upload">上传图片</a>
+    <a href="rules.html" class="rules">传图规则</a>
+    <a href="register.html" class="register">用户注册</a>
   </div>
 </div>
 
-<!-- 内容 -->
-<div class="content">
-  <div class="title-desc">这是一个航空图库</div>
-
-  <div class="join-us">
+<div class="container">
+  <div class="title">这是一个航空图库</div>
+  <div class="contact">
     如果你有兴趣，欢迎加入我们！<br>
     微信：WZQ60722696<br>
     邮箱：3810421790@qq.com
   </div>
-
-  <!-- 上传面板 -->
-  <div class="panel" id="uploadPanel">
-    <h3>上传图片</h3>
-    <p>这里可后续扩展航空图片上传功能。</p>
-  </div>
-
-  <!-- 规则面板 -->
-  <div class="panel" id="rulesPanel">
-    <h3>传图规则</h3>
-    <p>1. 支持 JPG / PNG 格式</p>
-    <p>2. 禁止违规、侵权内容</p>
-    <p>3. 仅用于航空摄影作品展示</p>
-  </div>
-
-  <!-- 注册面板 -->
-  <div class="panel" id="registerPanel">
-    <h3>用户注册</h3>
-    <div class="form-item">
-      <label>用户名</label>
-      <input type="text" name="username" required>
-    </div>
-    <div class="form-item">
-      <label>邮箱</label>
-      <input type="email" name="email" required>
-    </div>
-    <button class="submit-btn">提交注册</button>
-  </div>
 </div>
 
-<script>
-  const uploadBtn = document.getElementById('uploadBtn');
-  const rulesBtn = document.getElementById('rulesBtn');
-  const registerBtn = document.getElementById('registerBtn');
-
-  const uploadPanel = document.getElementById('uploadPanel');
-  const rulesPanel = document.getElementById('rulesPanel');
-  const registerPanel = document.getElementById('registerPanel');
-
-  function hideAll() {
-    uploadPanel.style.display = 'none';
-    rulesPanel.style.display = 'none';
-    registerPanel.style.display = 'none';
-  }
-
-  uploadBtn.addEventListener('click', function(){
-    hideAll();
-    uploadPanel.style.display = 'block';
-  });
-
-  rulesBtn.addEventListener('click', function(){
-    hideAll();
-    rulesPanel.style.display = 'block';
-  });
-
-  registerBtn.addEventListener('click', function(){
-    hideAll();
-    registerPanel.style.display = 'block';
-  });
-</script>
+<div class="footer">
+  <svg viewBox="0 0 16 16">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01-1.93-.01-2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+  </svg>
+  本网站由 GitHub 进行托管
+</div>
 
 </body>
 </html>
