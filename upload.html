@@ -1,21 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>上传图片 - WZQ Photos</title>
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
-  body { background:#FFF3E0; min-height:100vh; }
-  .header { background:#FF9800; color:white; padding:18px 30px; display:flex; justify-content:space-between; align-items:center; }
-  .logo { font-size:24px; font-weight:bold; }
-  .content { padding:60px 20px; text-align:center; font-size:18px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传照片 - WZQ Photos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background: #f0f3f5;
+        }
+        /* 与首页完全一致的墨绿色头部 */
+        .header {
+            background: #1F4D37;
+            color: #fff;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,.1);
+        }
+        /* 统一风格的返回按钮 */
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,.1);
+        }
+        .content {
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        /* 醒目的测试提示框 */
+        .test-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        .upload-placeholder {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
+
+<!-- 墨绿色顶部导航，带返回首页按钮 -->
 <div class="header">
-  <div class="logo">WZQ Photos</div>
+    <h1>上传照片</h1>
+    <a href="index.html" class="back-btn">返回首页</a>
 </div>
-<div class="content">此处未来可上传照片</div>
+
+<div class="content">
+    <!-- 测试说明：明确告知不能上传 -->
+    <div class="test-notice">
+        <strong>⚠️ 功能未开放</strong>
+        <p>本网站目前处于测试阶段，照片上传功能暂未启用。</p>
+        <p>敬请期待正式上线后开放此功能！</p>
+    </div>
+
+    <!-- 占位文字 -->
+    <div class="upload-placeholder">
+        此处未来可上传照片
+    </div>
+</div>
+
 </body>
 </html>
