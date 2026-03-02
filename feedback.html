@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给站长留言 - WZQ Photos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#f8f9fa}
+.header{background:#1F4D37;color:white;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.header h1{font-size:18px}
+.back-btn{color:white;text-decoration:none;padding:8px 16px;border:1px solid white;border-radius:4px;font-size:14px}
+.feedback-form{max-width:500px;margin:40px auto;padding:20px;background:white;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.feedback-form h3{color:#1F4D37;text-align:center;margin-bottom:15px}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:14px;margin-bottom:4px;color:#555}
+.form-group input,.form-group textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px}
+.form-group textarea{resize:vertical;min-height:80px}
+.btn-submit{width:100%;background:#1F4D37;color:white;border:none;padding:12px;border-radius:6px;cursor:pointer;font-size:15px}
+.footer{background:#222;color:#ccc;text-align:center;padding:12px;font-size:12px;position:fixed;bottom:0;width:100%}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>WZQ Photos</h1>
+  <a href="index.html" class="back-btn">返回首页</a>
+</div>
+
+<div class="feedback-form">
+  <h3>✉️ 给站长留言</h3>
+  <form action="https://formspree.io/f/xoqwnedo" method="POST">
+    <div class="form-group">
+      <label>你的昵称</label>
+      <input type="text" name="name" placeholder="请输入昵称" required>
+    </div>
+    <div class="form-group">
+      <label>你的邮箱</label>
+      <input type="email" name="email" placeholder="example@qq.com" required>
+    </div>
+    <div class="form-group">
+      <label>留言内容</label>
+      <textarea name="message" placeholder="建议、投稿、报错都可以..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">发送留言</button>
+  </form>
+</div>
+
+<div class="footer">本网站由 GitHub 托管</div>
+</body>
+</html>
