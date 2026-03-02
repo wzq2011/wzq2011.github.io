@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录 - WZQ Photos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif}
+body{background:#f0f3f5}
+.header{background:#1F4D37;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.header h1{font-size:20px}
+.back-btn{color:#fff;text-decoration:none;padding:8px 18px;border:1px solid rgba(255,255,255,.3);border-radius:6px;font-size:14px}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.login-box{max-width:500px;margin:60px auto;padding:30px;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.07)}
+.login-box h2{color:#1F4D37;text-align:center;margin-bottom:25px;padding-bottom:10px;border-bottom:2px solid #1F4D37}
+.form-item{margin-bottom:18px}
+.form-item label{display:block;margin-bottom:6px;font-size:14px;color:#333}
+.form-item input{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+.form-item input:focus{outline:none;border-color:#1F4D37}
+.login-btn{width:100%;background:#1F4D37;color:#fff;border:none;padding:13px;border-radius:8px;font-size:16px;cursor:pointer}
+.login-btn:hover{background:#163a29}
+.footer{background:#222;color:#ccc;text-align:center;padding:14px;font-size:13px;position:fixed;bottom:0;width:100%}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>WZQ Photos</h1>
+  <a href="index.html" class="back-btn">返回首页</a>
+</div>
+
+<div class="login-box">
+  <h2>用户登录</h2>
+  <form onsubmit="login(event)">
+    <div class="form-item">
+      <label>用户名</label>
+      <input type="text" id="username" required>
+    </div>
+    <div class="form-item">
+      <label>密码</label>
+      <input type="password" id="password" required>
+    </div>
+    <button type="submit" class="login-btn">登录</button>
+  </form>
+</div>
+
+<div class="footer">本网站由 GitHub 托管</div>
+
+<script>
+function login(e) {
+  e.preventDefault();
+  let user = document.getElementById("username").value;
+  localStorage.setItem("username", user);
+  alert("登录成功！");
+  location.href = "index.html";
+}
+</script>
+</body>
+</html>
