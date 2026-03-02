@@ -14,7 +14,7 @@
         body {
             background-color: #f0f3f5;
         }
-        /* 顶部导航栏（和首页完全一致） */
+        /* 顶部导航栏（和首页/留言页完全一致） */
         .header {
             background-color: #1F4D37;
             color: white;
@@ -116,10 +116,13 @@
         <a href="index.html" class="back-btn">返回首页</a>
     </div>
 
-    <!-- 注册表单（带 Formspree 占位） -->
+    <!-- 注册表单（带 Formspree 占位和跳过验证代码） -->
     <div class="register-container">
         <h3>📝 用户注册</h3>
         <form action="https://formspree.io/f/你的专属Formspree链接" method="POST">
+            <!-- 👇 这行代码跳过人机验证 -->
+            <input type="hidden" name="_gotcha" style="display:none !important;">
+
             <div class="form-group">
                 <label>用户名</label>
                 <input type="text" name="username" placeholder="请输入用户名" required>
