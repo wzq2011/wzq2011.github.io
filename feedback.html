@@ -20,6 +20,7 @@ body{background:#f0f3f5}
 .btn-submit{width:100%;background:#1F4D37;color:#fff;border:none;padding:14px;border-radius:8px;font-size:16px;cursor:pointer}
 .btn-submit:hover{background:#163a29}
 .footer{background:#222;color:#ccc;text-align:center;padding:14px;font-size:13px;position:fixed;bottom:0;width:100%}
+.success{color:#1F4D37;text-align:center;margin-top:15px;font-size:15px}
 </style>
 </head>
 <body>
@@ -31,26 +32,36 @@ body{background:#f0f3f5}
 
 <div class="form-container">
   <h3>留言反馈</h3>
-  <form action="https://formsubmit.co/3810421790@qq.com" method="POST">
+  <form action="https://formsubmit.co/3810421790@qq.com" method="POST" onsubmit="return msgSuccess()">
     <input type="hidden" name="_honey" style="display:none">
     <input type="hidden" name="_next" value="https://wzq2011.github.io/index.html">
+    <input type="hidden" name="表单类型" value="留言反馈">
 
     <div class="form-group">
       <label>昵称</label>
-      <input type="text" name="name" required>
+      <input type="text" name="昵称" required>
     </div>
     <div class="form-group">
       <label>邮箱</label>
-      <input type="email" name="email" required>
+      <input type="email" name="邮箱" required>
     </div>
     <div class="form-group">
       <label>留言内容</label>
-      <textarea name="message" rows="5" required></textarea>
+      <textarea name="留言" rows="5" required></textarea>
     </div>
     <button type="submit" class="btn-submit">提交留言</button>
+    <div class="success" id="successText" style="display:none">✅ 留言提交成功！</div>
   </form>
 </div>
 
 <div class="footer">本网站由 GitHub 托管</div>
+
+<script>
+function msgSuccess(){
+  document.getElementById("successText").style.display="block";
+  return true;
+}
+</script>
 </body>
 </html>
+
