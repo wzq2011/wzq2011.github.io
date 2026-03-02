@@ -3,189 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WZQ Photos - 航空图库</title>
+    <title>WZQ Photos - 测试版</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
+            font-family: "Microsoft Yahei", sans-serif;
         }
         body {
-            background-color: #f8f9fa;
+            background: #f0f3f5;
         }
-        /* 顶部导航栏 */
         .header {
-            background-color: #1F4D37; /* 墨绿色 */
-            color: white;
-            padding: 12px 20px;
+            background: #1F4D37;
+            color: #fff;
+            padding: 14px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .header h1 {
-            font-size: 18px;
-            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,.1);
         }
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px; /* 按钮之间的间距，做成独立矩形 */
         }
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
+        .nav-btn {
+            background-color: #2E8B57; /* 绿色矩形按钮 */
             color: white;
-            cursor: pointer;
-            font-size: 14px;
+            padding: 10px 20px;
             text-decoration: none;
-            display: inline-block;
-        }
-        .btn-upload {
-            background-color: #2E7D60; /* 稍亮的墨绿色 */
-        }
-        .btn-message {
-            background-color: #2E7D60;
-        }
-        .btn-rules {
-            background-color: #2E7D60;
-        }
-        .btn-register {
-            background-color: #4CAF50;
-        }
-        /* 主体内容 */
-        .main {
-            max-width: 800px;
-            margin: 40px auto;
-            text-align: center;
-            color: #333;
-        }
-        .main h2 {
-            color: #1F4D37;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .main p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 5px 0;
-        }
-        /* 传图规则弹窗（默认隐藏） */
-        .rules-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .rules-content {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-        }
-        .rules-content h3 {
-            color: #1F4D37;
-            margin-bottom: 15px;
-        }
-        .rules-content ul {
-            text-align: left;
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        .rules-content li {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-        .close-btn {
-            background: #1F4D37;
-            color: white;
-            border: none;
-            padding: 8px 16px;
             border-radius: 4px;
+            font-size: 14px;
+            border: none;
             cursor: pointer;
-            margin-top: 15px;
-        }
-        /* 底部 */
-        .footer {
-            background-color: #222;
-            color: #ccc;
+            min-width: 120px; /* 统一按钮宽度，更像独立矩形 */
             text-align: center;
-            padding: 12px;
-            font-size: 12px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+        .nav-btn:hover {
+            background-color: #1F4D37;
+        }
+        .welcome-text {
+            color: white;
+            font-size: 14px;
+            line-height: 40px;
+            margin-right: 12px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .test-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #444;
         }
     </style>
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <div class="header">
-        <h1>WZQ Photos</h1>
-        <div class="nav-buttons">
-            <button class="btn btn-upload" onclick="document.getElementById('fileInput').click()">上传照片</button>
-            <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
-            
-            <a href="feedback.html" class="btn btn-message">给站长留言</a>
-            
-           <a href="register.html" class="btn btn-register" style="text-decoration:none;">用户注册</a>
 
-            
-            <button class="btn btn-register">用户注册</button>
-        </div>
+<div class="header">
+    <h1>WZQ Photos</h1>
+    <div class="nav-buttons" id="navBar">
+        <a href="upload.html" class="nav-btn">传照片</a>
+        <a href="feedback.html" class="nav-btn">给站长留言</a>
+        <a href="login.html" class="nav-btn" id="loginBtn">登录</a>
+        <a href="register.html" class="nav-btn" id="registerBtn">用户注册</a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="test-notice">
+        <strong>⚠️ 网站测试公告：</strong>
+        <p>此网站目前处于测试阶段，功能尚未完全开放。</p>
+        <p>部分页面和功能可能存在不稳定或无法使用的情况，请勿用于正式用途。</p>
+        <p>感谢您的理解与支持，我们会尽快完善并正式上线！</p>
     </div>
 
-    <!-- 主体内容 -->
-    <div class="main">
-        <h2>这是一个航空图库</h2>
-        <p>如果你有兴趣，欢迎加入我们！</p>
-        <p>微信：WZQ60722696</p>
-        <p>邮箱：3810421790@qq.com</p>
+    <h2>未来这里将展示优质照片</h2>
+    <p>本项目预计一年时间完成，如果您感兴趣欢迎您的加入</p>
+    <p>因本因人是建站新手，故无偿寻找技术人员支持，如果您愿意，请与我联系</p>
+    
+    <div class="contact-info">
+        <p>📧 联系方式：
+            邮箱：3810421790@qq.com</p>
+            微信：wzq60722696</p>
+        <p>✈️ 专注航空摄影与飞行记录</p>
     </div>
+</div>
 
-    <!-- 传图规则弹窗 -->
-    <div class="rules-modal" id="rulesModal">
-        <div class="rules-content">
-            <h3>📸 传图规则</h3>
-            <ul>
-                <li>图片必须为航空相关内容（飞机、机场、飞行日志等）</li>
-                <li>图片清晰，无水印、无遮挡，分辨率不低于 1920×1080</li>
-                <li>禁止上传侵权、低俗、违法或与航空无关的内容</li>
-                <li>上传即表示同意本站对图片进行展示和编辑</li>
-            </ul>
-            <button class="close-btn" onclick="closeRules()">关闭</button>
-        </div>
-    </div>
+<script>
+    window.onload = function() {
+        let user = localStorage.getItem("username");
+        let navBar = document.getElementById("navBar");
 
-    <!-- 底部 -->
-    <div class="footer">
-        本网站由 GitHub 进行托管
-    </div>
-
-    <script>
-        // 简单的图片上传处理（前端示例，实际需后端支持）
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            if (file) {
-                alert(`已选择图片：${file.name}\n（注：当前为静态页面，实际上传需后端支持）`);
-            }
+        if (user) {
+            // 登录状态：显示欢迎语和退出按钮
+            navBar.innerHTML = `
+                <a href="upload.html" class="nav-btn">传照片</a>
+                <a href="feedback.html" class="nav-btn">给站长留言</a>
+                <span class="welcome-text">欢迎你，${user}</span>
+                <button onclick="logout()" class="nav-btn">退出</button>
+            `;
         }
+    };
 
-        // 显示传图规则弹窗
-        function showRules() {
-            document.getElementById('rulesModal').style.display = 'flex';
-        }
+    function logout() {
+        localStorage.removeItem("username");
+        alert("已退出登录");
+        location.href = "index.html";
+    }
+</script>
 
-        // 关闭传图规则弹窗
-        function closeRules() {
-            document.getElementById('rulesModal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
