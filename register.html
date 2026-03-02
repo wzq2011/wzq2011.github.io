@@ -1,150 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户注册 - WZQ Photos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
-        body {
-            background-color: #f0f3f5;
-        }
-        /* 顶部导航栏（和首页/留言页完全一致） */
-        .header {
-            background-color: #1F4D37;
-            color: white;
-            padding: 14px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        .header h1 {
-            font-size: 20px;
-            font-weight: 600;
-        }
-        .back-btn {
-            color: white;
-            text-decoration: none;
-            padding: 8px 18px;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 6px;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        .back-btn:hover {
-            background-color: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.5);
-        }
-        /* 注册表单容器（完整美化） */
-        .register-container {
-            max-width: 520px;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-        .register-container h3 {
-            color: #1F4D37;
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 20px;
-            border-bottom: 2px solid #1F4D37;
-            padding-bottom: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 15px;
-            margin-bottom: 8px;
-            color: #444;
-            font-weight: 500;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: border-color 0.2s;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: #1F4D37;
-            box-shadow: 0 0 0 3px rgba(31, 77, 55, 0.1);
-        }
-        .btn-submit {
-            width: 100%;
-            background-color: #1F4D37;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .btn-submit:hover {
-            background-color: #163a28;
-        }
-        /* 底部（和首页统一） */
-        .footer {
-            background-color: #222;
-            color: #ccc;
-            text-align: center;
-            padding: 14px;
-            font-size: 13px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户注册 - WZQ Photos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif}
+body{background:#f0f3f5}
+.header{background:#1F4D37;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.header h1{font-size:20px}
+.back-btn{color:#fff;text-decoration:none;padding:8px 18px;border:1px solid rgba(255,255,255,.3);border-radius:6px;font-size:14px}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.register-container{max-width:520px;margin:50px auto;padding:30px;background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.register-container h3{color:#1F4D37;text-align:center;margin-bottom:25px;font-size:20px;border-bottom:2px solid #1F4D37;padding-bottom:10px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;margin-bottom:8px;font-size:15px;color:#444}
+.form-group input{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+.form-group input:focus{outline:none;border-color:#1F4D37}
+.btn-submit{width:100%;background:#1F4D37;color:#fff;border:none;padding:14px;border-radius:8px;font-size:16px;cursor:pointer}
+.btn-submit:hover{background:#163a29}
+.footer{background:#222;color:#ccc;text-align:center;padding:14px;font-size:13px;position:fixed;bottom:0;width:100%}
+</style>
 </head>
 <body>
-    <!-- 顶部导航：左上角 WZQ Photos，右上角返回首页 -->
-    <div class="header">
-        <h1>WZQ Photos</h1>
-        <a href="index.html" class="back-btn">返回首页</a>
-    </div>
 
-    <!-- 注册表单（带 Formspree 占位和跳过验证代码） -->
-    <div class="register-container">
-        <h3>📝 用户注册</h3>
-        <form action="https://formspree.io/f/你的专属Formspree链接" method="POST">
-            <!-- 👇 这行代码跳过人机验证 -->
-            <input type="hidden" name="_gotcha" style="display:none !important;">
+<div class="header">
+  <h1>WZQ Photos</h1>
+  <a href="index.html" class="back-btn">返回首页</a>
+</div>
 
-            <div class="form-group">
-                <label>用户名</label>
-                <input type="text" name="username" placeholder="请输入用户名" required>
-            </div>
-            <div class="form-group">
-                <label>电子邮箱</label>
-                <input type="email" name="email" placeholder="example@qq.com" required>
-            </div>
-            <div class="form-group">
-                <label>设置密码</label>
-                <input type="password" name="password" placeholder="8位以上，含大小写、数字、特殊字符" required>
-            </div>
-            <div class="form-group">
-                <label>确认密码</label>
-                <input type="password" name="confirm_password" placeholder="请再次输入密码" required>
-            </div>
-            <button type="submit" class="btn-submit">完成注册</button>
-        </form>
-    </div>
+<div class="register-container">
+  <h3>用户注册</h3>
+  <form action="https://formsubmit.co/3810421790@qq.com" method="POST" onsubmit="return showSuccess()">
+    <input type="hidden" name="_honey" style="display:none">
+    <input type="hidden" name="_next" value="https://wzq2011.github.io/index.html">
+    <input type="hidden" name="表单类型" value="用户注册">
 
-    <div class="footer">
-        本网站由 GitHub 进行托管
+    <div class="form-group">
+      <label>用户名</label>
+      <input type="text" name="用户名" required>
     </div>
+    <div class="form-group">
+      <label>邮箱</label>
+      <input type="email" name="邮箱" required>
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input type="password" name="密码" required>
+    </div>
+    <div class="form-group">
+      <label>确认密码</label>
+      <input type="password" name="确认密码" required>
+    </div>
+    <button type="submit" class="btn-submit">注册</button>
+  </form>
+</div>
+
+<div class="footer">本网站由 GitHub 托管</div>
+
+<script>
+function showSuccess() {
+  alert("注册成功！信息已发送至站长邮箱");
+  return true;
+}
+</script>
 </body>
 </html>
