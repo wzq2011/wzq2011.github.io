@@ -25,10 +25,10 @@
         }
         .nav-buttons {
             display: flex;
-            gap: 12px; /* 按钮之间的间距，做成独立矩形 */
+            gap: 12px;
         }
         .nav-btn {
-            background-color: #2E8B57; /* 绿色矩形按钮 */
+            background-color: #2E8B57;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -36,7 +36,7 @@
             font-size: 14px;
             border: none;
             cursor: pointer;
-            min-width: 120px; /* 统一按钮宽度，更像独立矩形 */
+            min-width: 110px;
             text-align: center;
         }
         .nav-btn:hover {
@@ -73,8 +73,8 @@
     <div class="nav-buttons" id="navBar">
         <a href="upload.html" class="nav-btn">传照片</a>
         <a href="feedback.html" class="nav-btn">给站长留言</a>
-        <a href="login.html" class="nav-btn" id="loginBtn">登录</a>
-        <a href="register.html" class="nav-btn" id="registerBtn">用户注册</a>
+        <a href="login.html" class="nav-btn">登录</a>
+        <a href="register.html" class="nav-btn">用户注册</a>
     </div>
 </div>
 
@@ -86,14 +86,15 @@
         <p>感谢您的理解与支持，我们会尽快完善并正式上线！</p>
     </div>
 
-    <h2>未来这里将展示优质照片</h2>
-    <p>本项目预计一年时间完成，如果您感兴趣欢迎您的加入</p>
-    <p>因本因人是建站新手，故无偿寻找技术人员支持，如果您愿意，请与我联系</p>
-    
+    <h2>欢迎来到我的航空摄影网站</h2>
+    <p>本项目预计一年内完成，未来这里将展示优质的航空摄影作品与飞行记录。</p>
+    <p>作为建站新手，我会持续学习和优化，也欢迎对航空摄影或网站开发感兴趣的朋友加入交流。</p>
+    <p>如果您愿意提供无偿的技术支持或建议，欢迎随时与我联系。</p>
+
     <div class="contact-info">
-        <p>📧 联系方式：
-            邮箱：3810421790@qq.com</p>
-            微信：wzq60722696</p>
+        <p>📧 联系方式：</p>
+        <p>邮箱：3810421790@qq.com</p>
+        <p>微信：wzq60722696</p>
         <p>✈️ 专注航空摄影与飞行记录</p>
     </div>
 </div>
@@ -104,7 +105,6 @@
         let navBar = document.getElementById("navBar");
 
         if (user) {
-            // 登录状态：显示欢迎语和退出按钮
             navBar.innerHTML = `
                 <a href="upload.html" class="nav-btn">传照片</a>
                 <a href="feedback.html" class="nav-btn">给站长留言</a>
@@ -123,3 +123,4 @@
 
 </body>
 </html>
+
