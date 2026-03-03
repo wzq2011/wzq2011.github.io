@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>传图规则 - WZQ Photos</title>
+<!-- 引入生成PDF的核心库，确保下载的是真实PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   * {
     margin: 0;
@@ -14,7 +17,9 @@
   body {
     background: #f0f3f5;
     padding: 0 10px;
+    line-height: 1.8;
   }
+  /* 顶部绿色导航条：和网站完全一致 */
   .header {
     background: #1F4D37;
     color: #fff;
@@ -41,50 +46,188 @@
   .nav-btn:hover {
     background-color: #1F4D37;
   }
-  .content {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    line-height: 1.8;
-    font-size: 16px;
+  /* 功能工具栏：打印+下载，绿色配色统一 */
+  .tool-bar {
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
   }
-  .content h2 {
-    color: #1F4D37;
-    margin-bottom: 15px;
+  .tool-bar button {
+    background: #2E8B57;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .tool-bar button:hover {
+    background: #1F4D37;
+  }
+  .tool-bar tip {
+    color: #666;
+    font-size: 14px;
+    margin-left: auto;
+  }
+  /* 规则内容容器：模拟PDF排版，白色背景，可标注 */
+  .rule-content {
+    width: 100%;
+    min-height: 600px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,.05);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .rule-content h1 {
+    text-align: center;
     font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1F4D37;
   }
-  .content p {
-    margin-bottom: 10px;
+  .rule-content h2 {
+    font-size: 18px;
+    margin: 18px 0 10px 0;
+    color: #1F4D37;
+  }
+  .rule-content h3 {
+    font-size: 16px;
+    margin: 15px 0 8px 0;
+  }
+  .rule-content p {
+    font-size: 15px;
     color: #333;
+    text-indent: 0;
+    margin-left: 20px;
   }
-
+  /* 手机端自适应 */
   @media (max-width: 768px) {
     .header {
       flex-direction: column;
       gap: 12px;
       padding: 16px;
     }
+    .tool-bar {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tool-bar tip {
+      margin-left: 0;
+      margin-top: 5px;
+      width: 100%;
+      font-size: 13px;
+    }
+    .rule-content {
+      padding: 20px;
+      min-height: 500px;
+    }
+    .rule-content h1 {
+      font-size: 20px;
+    }
+    .rule-content p {
+      margin-left: 10px;
+    }
   }
 </style>
 </head>
-
 <body>
-
-<!-- 顶部绿色条：左边WZQ Photos，右边返回首页 -->
+<!-- 顶部绿色导航：WZQ Photos + 返回首页 -->
 <div class="header">
   <h1>WZQ Photos</h1>
   <a href="index.html" class="nav-btn">返回首页</a>
 </div>
 
-<!-- 规则内容 -->
-<div class="content">
-  <h2>传图规则</h2>
-  <p>1. 仅允许上传航空、飞机、机场相关原创摄影作品。</p>
-  <p>2. 禁止上传色情、暴力、违法、侵权图片。</p>
-  <p>3. 图片不得带有水印、二维码、广告等无关内容。</p>
-  <p>4. 请勿上传重复、模糊、无意义的图片。</p>
-  <p>5. 违反规则的图片将被删除，严重者禁止使用上传功能。</p>
+<!-- 功能工具栏：打印 + 下载PDF -->
+<div class="tool-bar">
+  <button id="printBtn">打印规范</button>
+  <button id="downloadBtn">下载PDF</button>
+  <tip>鼠标选中文字可在线标注/高亮</tip>
 </div>
 
+<!-- 规则内容：模拟PDF排版，直接在线看，可标注 -->
+<div class="rule-content" id="ruleContent">
+  <h1>WZQPhotos 航空图库网站审核与传图规范</h1>
+  
+  <h2>一、图片质量</h2>
+  <h3>1. 图片格式要求</h3>
+  <p>1.1 图片必须为JPG/JPEG格式，不支持上传其他格式。</p>
+  <p>1.2 请保证图片清晰可见，无过度模糊及严重噪点，拍摄飞机请务必保证航空公司名称以及注册号清晰可辨（机身右下部的小字模糊可忽略，如：A320neo）。如出现过度模糊及严重噪点将不予通过。</p>
+  <p>1.3 图片中不能出现肉眼可见的脏点或灰尘，如出现将不予通过。</p>
+
+  <h3>2. 构图与完整性要求</h3>
+  <p>2.1 飞机类图片：</p>
+  <p>2.1.1 图片主体（飞机）需完整展示，无关键部位被恶意裁剪、遮挡或涂抹。</p>
+  <p>2.1.2 建议采用完整机身构图，确保飞机从机头到机尾的主体部分均在画面内，无明显截断。</p>
+  <p>2.1.3 若为特殊角度拍摄（如仰拍），需保证航空公司标识、注册号等关键信息完整呈现，避免只截取局部细节（如仅拍摄机头、机翼等）。</p>
+
+  <p>2.2 机场类图片：</p>
+  <p>2.2.1 拍摄的照片需完整展示机场核心元素，如航站楼、跑道、停机坪、塔台等，避免只截取局部招牌或角落。</p>
+  <p>2.2.2 若拍摄机场设施（如登机口、行李转盘、指示牌等），需保证文字标识清晰可辨，无大面积遮挡。</p>
+
+  <p>2.3 通用要求：</p>
+  <p>2.3.1 禁止上传过度倾斜、倒置或严重变形的图片，画面比例应正常，无大面积无效黑边、白边或杂边。</p>
+  <p>2.3.2 若因拍摄环境限制出现少量边缘遮挡，需确保不影响核心信息的识别。</p>
+  <p>2.3.3 对于辅助图片（如飞行日志、登机牌等），需完整展示全部边框、文字、印章及关键栏目，不得只截取局部，个人及敏感信息可打马赛克或涂抹。</p>
+
+  <p>2.4 热变形</p>
+  <p>2.4.1 在气温较高、温差较大的且对地拍摄（滑行中的飞机）的情况下，可能会出现热变形，若拍摄的飞机的热变形严重，影响飞机的正常展示将不予通过。</p>
+
+  <h2>三、内容规范性</h2>
+  <p>3.1 所有图片必须为本人原创，禁止盗用、转载他人作品。</p>
+  <p>3.2 图片内容必须真实，不得篡改、遮挡、伪造飞机注册号、机场信息等。</p>
+  <p>3.3 禁止上传危险拍摄、违规区域拍摄及危害航空安全的内容。</p>
+  <p>3.4 不得上传涉及隐私、暴力、低俗、色情、危害国家安全、广告及其他无关内容。</p>
+  <p>3.5 图片主题需与飞机、机场相关，画面干净，无恶意遮挡与杂物干扰。</p>
+
+  <p style="margin-top: 20px; font-weight: bold; color: #d9534f;">以上条款满足任意一条将不予通过。</p>
+</div>
+
+<script>
+  // 打印功能：直接打印规则内容，排版整洁
+  document.getElementById('printBtn').addEventListener('click', () => {
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>WZQPhotos传图规范</title>
+          <style>body{font-family:Microsoft Yahei;line-height:1.8;padding:20px;}</style>
+        </head>
+        <body>${document.getElementById('ruleContent').innerHTML}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  });
+
+  // 下载真实PDF功能：用jspdf生成可打开的PDF文件
+  document.getElementById('downloadBtn').addEventListener('click', async () => {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+
+    // 把HTML内容转成canvas，再生成PDF
+    const canvas = await html2canvas(document.getElementById('ruleContent'), {
+      scale: 2, // 高清无模糊
+      useCORS: true
+    });
+    const imgData = canvas.toDataURL('image/png');
+    const imgWidth = 210;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+    // 下载PDF，命名规范
+    pdf.save('WZQPhotos航空图库传图规范.pdf');
+  });
+</script>
 </body>
 </html>
