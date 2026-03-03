@@ -3,154 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WZQ Photos - 测试版</title>
-   <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft Yahei", sans-serif;
-}
-body {
-    background: #f0f3f5;
-}
-.header {
-    background: #1F4D37;
-    color: #fff;
-    padding: 14px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,.1);
-}
-.nav-buttons {
-    display: flex;
-    gap: 12px;
-}
-.nav-btn {
-    background-color: #2E8B57;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 14px;
-}
-.nav-btn:hover {
-    background-color: #1F4D37;
-}
-.welcome-text {
-    color: white;
-    font-size: 16px;
-    line-height: 40px;
-}
-.test-notice {
-    background-color: #fff3cd;
-    border: 1px solid #ffeaa7;
-    color: #856404;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-.contact-info {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #444;
-}
+    <title>WZQ Photos - 航空摄影网站</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
 
-/* 手机适配代码 */
-html, body {
-    overflow-x: hidden;
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-@media (max-width: 768px) {
-    body {
-        padding: 0 12px;
-    }
-    .header {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .nav-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-    }
-    button, input, textarea {
-        width: 100%;
-        padding: 10px;
-    }
-}
-</style>
+        /* 页面主体样式 */
+        body {
+            background: #f0f3f5;
+            padding: 0 10px;
+        }
 
-html,body{overflow-x:hidden;}
-img{max-width:100%;height:auto;}
-@media(max-width:768px){
-  body{padding:0 12px;}
-  .header{flex-direction:column;gap:10px;}
-  .nav-buttons{flex-direction:column;width:100%;gap:8px;}
-  button,input,textarea{width:100%;padding:10px;}
-}
+        /* 头部导航样式 */
+        .header {
+            background: #1F4D37;
+            color: #fff;
+            padding: 14px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,.1);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
 
+        .header h1 {
+            margin-bottom: 12px;
+            font-size: 28px;
+        }
+
+        /* 导航按钮容器 */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+        }
+
+        /* 导航按钮样式 */
+        .nav-btn {
+            background-color: #2E8B57;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .nav-btn:hover {
+            background-color: #1F4D37;
+        }
+
+        /* 测试公告样式 */
+        .test-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        /* 内容区域样式 */
+        .content {
+            padding: 0 10px;
+        }
+
+        .content h2 {
+            color: #1F4D37;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .content p {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        /* 手机适配（已整合，无需额外代码） */
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header h1 {
+                margin-bottom: 0;
+            }
+            .nav-buttons {
+                flex-direction: row;
+                width: auto;
+                gap: 12px;
+            }
+            .nav-btn {
+                padding: 10px 20px;
+            }
+            body {
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
-
-<div class="header">
-    <h1>WZQ Photos</h1>
-    <div class="nav-buttons" id="navBar">
-        <a href="upload.html" class="nav-btn">传照片</a>
-        <a href="feedback.html" class="nav-btn">给站长留言</a>
-        <a href="login.html" class="nav-btn">登录</a>
-        <a href="register.html" class="nav-btn">用户注册</a>
-    </div>
-</div>
-
-<div class="content">
-    <div class="test-notice">
-        <strong>⚠️ 网站测试公告：</strong>
-        <p>此网站目前处于测试阶段，功能尚未完全开放。</p>
-        <p>部分页面和功能可能存在不稳定或无法使用的情况，请勿用于正式用途。</p>
-        <p>感谢您的理解与支持，我们会尽快完善并正式上线！</p>
+    <!-- 头部导航 -->
+    <div class="header">
+        <h1>WZQ Photos</h1>
+        <div class="nav-buttons" id="navBar">
+            <a href="upload.html" class="nav-btn">传照片</a>
+            <a href="feedback.html" class="nav-btn">给站长留言</a>
+            <a href="login.html" class="nav-btn">登录</a>
+            <a href="register.html" class="nav-btn">用户注册</a>
+        </div>
     </div>
 
-    <h2>欢迎来到我的航空摄影网站</h2>
-    <p>本项目预计一年内完成，未来这里将展示优质的航空摄影作品与飞行记录。</p>
-    <p>作为建站新手，我会持续学习和优化，也欢迎对航空摄影或网站开发感兴趣的朋友加入交流。</p>
-    <p>如果您愿意提供无偿的技术支持或建议，欢迎随时与我联系。</p>
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 测试公告 -->
+        <div class="test-notice">
+            <strong>⚠️ 网站测试公告：</strong>
+            <p>此网站目前处于测试阶段，功能尚未完全开放。</p>
+            <p>部分页面和功能可能存在不稳定或无法使用的情况，请勿用于正式用途。</p>
+            <p>感谢您的理解与支持，我们会尽快完善并正式上线！</p>
+        </div>
 
-    <div class="contact-info">
-        <p>📧 联系方式：</p>
-        <p>邮箱：3810421790@qq.com</p>
-        <p>微信：wzq60722696</p>
-        <p>✈️ 专注航空摄影与飞行记录</p>
+        <!-- 网站介绍 -->
+        <h2>欢迎来到我的航空摄影网站</h2>
+        <p>本项目预计一年内完成，未来这里将展示优质的航空摄影作品与飞行记录。</p>
+        <p>作为建站新手，我会持续学习和优化，也欢迎对航空摄影或网站开发感兴趣的朋友加入交流。</p>
+        <p>如果您愿意提供无偿的技术支持或建议，欢迎随时与我联系。</p>
     </div>
-</div>
-
-<script>
-    window.onload = function() {
-        let user = localStorage.getItem("username");
-        let navBar = document.getElementById("navBar");
-
-        if (user) {
-            navBar.innerHTML = `
-                <a href="upload.html" class="nav-btn">传照片</a>
-                <a href="feedback.html" class="nav-btn">给站长留言</a>
-                <span class="welcome-text">欢迎你，${user}</span>
-                <button onclick="logout()" class="nav-btn">退出</button>
-            `;
-        }
-    };
-
-    function logout() {
-        localStorage.removeItem("username");
-        alert("已退出登录");
-        location.href = "index.html";
-    }
-</script>
-
 </body>
 </html>
-
