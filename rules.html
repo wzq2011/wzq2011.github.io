@@ -5,22 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>传图规则 - WZQ Photos</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
-  body { background:#FFF3E0; min-height:100vh; }
-  .header { background:#FF9800; color:white; padding:18px 30px; display:flex; justify-content:space-between; align-items:center; }
-  .logo { font-size:24px; font-weight:bold; }
-  .content { max-width:600px; margin:40px auto; padding:0 20px; line-height:2; font-size:16px; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+  }
+  body {
+    background: #f0f3f5;
+    padding: 0 10px;
+  }
+  .header {
+    background: #1F4D37;
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+  .header h1 {
+    font-size: 28px;
+  }
+  .nav-btn {
+    background-color: #2E8B57;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .nav-btn:hover {
+    background-color: #1F4D37;
+  }
+  .content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  .content h2 {
+    color: #1F4D37;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  .content p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+    }
+  }
 </style>
 </head>
+
 <body>
+
+<!-- 顶部绿色条：左边WZQ Photos，右边返回首页 -->
 <div class="header">
-  <div class="logo">WZQ Photos</div>
+  <h1>WZQ Photos</h1>
+  <a href="index.html" class="nav-btn">返回首页</a>
 </div>
+
+<!-- 规则内容 -->
 <div class="content">
-  1. 支持 JPG / PNG 格式<br>
-  2. 禁止违规、侵权内容<br>
-  3. 仅用于航空摄影展示<br>
-     注：仅为测试不代表最终规则！
+  <h2>传图规则</h2>
+  <p>1. 仅允许上传航空、飞机、机场相关原创摄影作品。</p>
+  <p>2. 禁止上传色情、暴力、违法、侵权图片。</p>
+  <p>3. 图片不得带有水印、二维码、广告等无关内容。</p>
+  <p>4. 请勿上传重复、模糊、无意义的图片。</p>
+  <p>5. 违反规则的图片将被删除，严重者禁止使用上传功能。</p>
 </div>
+
 </body>
 </html>
