@@ -73,7 +73,7 @@ body {
   margin-bottom:10px;
   display:block;
 }
-.login-btn {
+.login-btn, .logout-btn {
   width:100%;
   background:#2E8B57;
   color:#fff;
@@ -82,6 +82,11 @@ body {
   border-radius:6px;
   font-size:16px;
   cursor:pointer;
+  margin-bottom:10px;
+}
+.logout-btn {
+  background:#666;
+  display:none;
 }
 .register-tip {
   text-align:center;
@@ -93,6 +98,13 @@ body {
   color:#1F4D37;
   text-decoration:none;
   font-weight:bold;
+}
+.welcome {
+  text-align:center;
+  font-size:16px;
+  color:#1F4D37;
+  margin-bottom:15px;
+  display:none;
 }
 </style>
 </head>
@@ -107,19 +119,22 @@ body {
 <div class="login-card">
   <h2>用户登录</h2>
 
-  <div class="form-group">
+  <div class="welcome" id="welcome"></div>
+
+  <div class="form-group" id="loginForm">
     <label>用户名</label>
     <input type="text" id="username">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" id="pwdForm">
     <label>密码</label>
     <input type="password" id="pwd">
   </div>
 
   <button type="button" class="toggle-pwd" onclick="togglePwd()">显示密码</button>
 
-  <button class="login-btn" onclick="doLogin()">登录</button>
+  <button class="login-btn" onclick="doLogin()" id="loginBtn">登录</button>
+  <button class="logout-btn" onclick="doLogout()" id="logoutBtn">退出登录</button>
 
   <div class="register-tip">
     还没有注册吗？<a href="register.html">点击注册</a>
@@ -140,7 +155,7 @@ function togglePwd() {
   }
 }
 
-// 登录演示（预留接口）
+// 登录
 function doLogin() {
   let username = document.getElementById('username').value;
   let pwd = document.getElementById('pwd').value;
@@ -150,10 +165,33 @@ function doLogin() {
     return;
   }
 
-  // ===== 以后在这里写 PHP 接口 =====
-  // fetch('/api/login.php', { ... })
+  // 登录成功
+  localStorage.setItem('username', username);
+  showWelcome();
+}
 
-  alert('登录演示：\n用户名：' + username + '\n密码已输入（前端演示）');
+// 显示欢迎
+function showWelcome() {
+  let user = localStorage.getItem('username');
+  if(user) {
+    document.getElementById('welcome').innerText = '欢迎你，' + user + '！';
+    document.getElementById('welcome').style.display = 'block';
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('pwdForm').style.display = 'none';
+    document.getElementById('loginBtn').style.display = 'none';
+    document.getElementById('logoutBtn').style.display = 'block';
+  }
+}
+
+// 退出登录
+function doLogout() {
+  localStorage.removeItem('username');
+  location.reload();
+}
+
+// 页面加载时检查是否已登录
+window.onload = function() {
+  showWelcome();
 }
 </script>
 
