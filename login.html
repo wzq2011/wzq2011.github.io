@@ -65,14 +65,13 @@ body {
   font-size:14px;
 }
 .toggle-pwd {
-  position:absolute;
-  right:10px;
-  top:32px;
   background:none;
   border:none;
   color:#1F4D37;
   font-size:12px;
   cursor:pointer;
+  margin-bottom:10px;
+  display:block;
 }
 .login-btn {
   width:100%;
@@ -110,16 +109,17 @@ body {
 
   <div class="form-group">
     <label>用户名</label>
-    <input type="text" placeholder="请输入注册时的用户名">
+    <input type="text" id="username">
   </div>
 
   <div class="form-group">
     <label>密码</label>
     <input type="password" id="pwd">
-    <button type="button" class="toggle-pwd" onclick="togglePwd()">显示密码</button>
   </div>
 
-  <button class="login-btn">登录</button>
+  <button type="button" class="toggle-pwd" onclick="togglePwd()">显示密码</button>
+
+  <button class="login-btn" onclick="doLogin()">登录</button>
 
   <div class="register-tip">
     还没有注册吗？<a href="register.html">点击注册</a>
@@ -127,17 +127,33 @@ body {
 </div>
 
 <script>
+// 显示/隐藏密码
 function togglePwd() {
-  let input = document.getElementById('pwd');
+  let pwd = document.getElementById('pwd');
   let btn = document.querySelector('.toggle-pwd');
-
-  if(input.type === 'password') {
-    input.type = 'text';
+  if(pwd.type === 'password') {
+    pwd.type = 'text';
     btn.textContent = '隐藏密码';
   } else {
-    input.type = 'password';
+    pwd.type = 'password';
     btn.textContent = '显示密码';
   }
+}
+
+// 登录演示（预留接口）
+function doLogin() {
+  let username = document.getElementById('username').value;
+  let pwd = document.getElementById('pwd').value;
+
+  if(!username || !pwd) {
+    alert('请输入用户名和密码');
+    return;
+  }
+
+  // ===== 以后在这里写 PHP 接口 =====
+  // fetch('/api/login.php', { ... })
+
+  alert('登录演示：\n用户名：' + username + '\n密码已输入（前端演示）');
 }
 </script>
 
