@@ -1,4 +1,4 @@
-// 语言包（兼容 IE11）
+// 语言包
 var lang = {
   zh: {
     "传照片": "传照片",
@@ -43,29 +43,39 @@ var lang = {
 };
 
 // 页面加载后执行
-window.onload = function() {
-  var navBar = document.getElementById('navBar');
-  var user = localStorage.getItem('currentUser');
-  var currentLang = localStorage.getItem('lang') || 'zh';
+window.onload = function () {
+  var navBar = document.getElementById("navBar");
+  var user = localStorage.getItem("currentUser");
+  var currentLang = localStorage.getItem("lang") || "zh";
 
-  // 翻译函数（兼容 IE11）
+  // 翻译函数
   function t(key) {
-    return lang[currentLang] && lang[currentLang][key] ? lang[currentLang][key] : key;
+    return lang[currentLang] && lang[currentLang][key]
+      ? lang[currentLang][key]
+      : key;
   }
 
+  // 渲染导航栏
   if (user) {
     navBar.innerHTML =
-      '<a href="upload.html" class="nav-btn" i18n="传照片">' + t("传照片") + '</a>' +
-      '<a href="rules.html" class="nav-btn" i18n="传图规则">' + t("传图规则") + '</a>' +
-      '<a href="feedback.html" class="nav-btn" i18n="给站长留言">' + t("给站长留言") + '</a>' +
+      '<a href="upload.html" class="nav-btn">' + t("传照片") + '</a>' +
+      '<a href="rules.html" class="nav-btn">' + t("传图规则") + '</a>' +
+      '<a href="feedback.html" class="nav-btn">' + t("给站长留言") + '</a>' +
       '<a class="nav-btn welcome">欢迎你，' + user + '</a>' +
-      '<a href="javascript:logout()" class="nav-btn" i18n="退出登录">' + t("退出登录") + '</a>';
+      '<a href="javascript:logout()" class="nav-btn">' + t("退出登录") + '</a>';
   } else {
     navBar.innerHTML =
-      '<a href="upload.html" class="nav-btn" i18n="传照片">' + t("传照片") + '</a>' +
-      '<a href="rules.html" class="nav-btn" i18n="传图规则">' + t("传图规则") + '</a>' +
-      '<a href="feedback.html" class="nav-btn" i18n="给站长留言">' + t("给站长留言") + '</a>' +
-      '<a href="login.html" class="nav-btn" i18n="登录">' + t("登录") + '</a>' +
-      '<a href="register.html" class="nav-btn" i18n="用户注册">' + t("用户注册") + '</a>';
+      '<a href="upload.html" class="nav-btn">' + t("传照片") + '</a>' +
+      '<a href="rules.html" class="nav-btn">' + t("传图规则") + '</a>' +
+      '<a href="feedback.html" class="nav-btn">' + t("给站长留言") + '</a>' +
+      '<a href="login.html" class="nav-btn">' + t("登录") + '</a>' +
+      '<a href="register.html" class="nav-btn">' + t("用户注册") + '</a>';
   }
 };
+
+// 退出登录
+function logout() {
+  localStorage.removeItem("currentUser");
+  location.href = "index.html";
+}
+
