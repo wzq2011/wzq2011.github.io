@@ -162,7 +162,52 @@ function logout() {
   location.href = 'index.html';
 }
 </script>
-<script src="lang.js"></script>
+<script>
+// 语言包
+const lang = {
+  zh: {
+    "传照片": "传照片",
+    "给站长留言": "给站长留言",
+    "登录": "登录",
+    "用户注册": "用户注册"
+  },
+  en: {
+    "传照片": "Upload Photos",
+    "给站长留言": "Leave Message",
+    "登录": "Login",
+    "用户注册": "Register"
+  },
+  ja: {
+    "传照片": "写真アップロード",
+    "给站长留言": "メッセージ",
+    "登录": "ログイン",
+    "用户注册": "新規登録"
+  },
+  ko: {
+    "传照片": "사진 업로드",
+    "给站长留言": "메시지 남기기",
+    "登录": "로그인",
+    "用户注册": "회원가입"
+  },
+  es: {
+    "传照片": "Subir Fotos",
+    "给站长留言": "Dejar Mensaje",
+    "登录": "Iniciar Sesión",
+    "用户注册": "Registrarse"
+  }
+};
+
+// 自动翻译
+document.addEventListener('DOMContentLoaded', function(){
+  const currentLang = localStorage.getItem('lang') || 'zh';
+  document.querySelectorAll('[i18n]').forEach(el => {
+    const key = el.getAttribute('i18n');
+    if (lang[currentLang] && lang[currentLang][key]) {
+      el.textContent = lang[currentLang][key];
+    }
+  });
+});
+</script>
 
 </body>
 </html>
