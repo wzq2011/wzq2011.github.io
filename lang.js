@@ -87,3 +87,10 @@ document.addEventListener('DOMContentLoaded', function() {
     el.textContent = lang[currentLang][key] || el.textContent;
   });
 });
+// 监听语言切换下拉框
+document.getElementById('langSwitch').addEventListener('change', function(e) {
+  const selectedLang = e.target.value;
+  localStorage.setItem('lang', selectedLang);
+  // 刷新页面，让新语言生效
+  location.reload();
+});
