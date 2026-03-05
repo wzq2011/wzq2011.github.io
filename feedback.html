@@ -123,56 +123,7 @@
         return true;
     }
 </script>
-<script>
-const lang = {
-  zh: {
-    首页:"首页",
-    上传照片:"上传照片",
-    留言:"留言",
-    登录:"登录",
-    注册:"注册",
-    公告:"这里写你的公告内容（中文）",
-  },
-  en: {
-    首页:"Home",
-    上传照片:"Upload Photo",
-    留言:"Message",
-    登录:"Login",
-    注册:"Register",
-    公告:"Your announcement here (English)",
-  },
-  ja: {
-    首页:"ホーム",
-    上传照片:"写真アップロード",
-    留言:"メッセージ",
-    登录:"ログイン",
-    注册:"登録",
-    公告:"お知らせ内容",
-  },
-  ko: {
-    首页:"홈",
-    上传照片:"사진 업로드",
-    留言:"메시지",
-    登录:"로그인",
-    注册:"회원가입",
-    公告:"공지사항",
-  },
-  la: {
-    首页:"Domus",
-    上传照片:"Imago",
-    留言:"Nuntium",
-    登录:"Login",
-    注册:"Inscribe",
-    公告:"Monitum",
-  }
-};
-
-let current = localStorage.getItem('lang') || 'zh';
-document.querySelectorAll('[i18n]').forEach(e => {
-  let key = e.getAttribute('i18n');
-  e.innerText = lang[current][key] || e.innerText;
-});
-</script>
+<script src="lang.js"></script>
 
 </body>
 </html>
