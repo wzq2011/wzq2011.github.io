@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WZQ Photos - 航空摄影网站</title>
 <style>
+ .nav-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+#langSwitch {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+
   * {
     margin: 0;
     padding: 0;
@@ -96,13 +110,14 @@
   <h1>WZQ Photos</h1>
   <div class="nav-buttons" id="navBar"></div>
 </div>
-<select onchange="localStorage.setItem('lang', this.value); location.reload()">
+<select id="langSwitch" onchange="localStorage.setItem('lang', this.value); location.reload()">
   <option value="zh">中文</option>
   <option value="en">English</option>
   <option value="ja">日本語</option>
   <option value="ko">한국어</option>
   <option value="es">Español</option>
 </select>
+
 
 <!-- 你原来的首页内容 全部还原 -->
 <div class="test-notice">
