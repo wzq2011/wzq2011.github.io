@@ -1,76 +1,71 @@
-// 语言包
-const lang = {
+// 语言包（兼容 IE11）
+var lang = {
   zh: {
     "传照片": "传照片",
+    "传图规则": "传图规则",
     "给站长留言": "给站长留言",
-    "登录": "登录",
-    "用户注册": "用户注册",
     "退出登录": "退出登录",
-    "欢迎你": "欢迎你",
-    "传图规则": "传图规则"
+    "登录": "登录",
+    "用户注册": "用户注册"
   },
   en: {
     "传照片": "Upload Photos",
+    "传图规则": "Upload Rules",
     "给站长留言": "Leave Message",
-    "登录": "Login",
-    "用户注册": "Register",
     "退出登录": "Logout",
-    "欢迎你": "Welcome",
-    "传图规则": "Upload Rules"
+    "登录": "Login",
+    "用户注册": "Register"
   },
   ja: {
     "传照片": "写真アップロード",
+    "传图规则": "アップロード規則",
     "给站长留言": "メッセージ",
-    "登录": "ログイン",
-    "用户注册": "登録",
     "退出登录": "ログアウト",
-    "欢迎你": "ようこそ",
-    "传图规则": "アップロードルール"
+    "登录": "ログイン",
+    "用户注册": "新規登録"
   },
   ko: {
     "传照片": "사진 업로드",
+    "传图规则": "업로드 규칙",
     "给站长留言": "메시지 남기기",
-    "登录": "로그인",
-    "用户注册": "회원가입",
     "退出登录": "로그아웃",
-    "欢迎你": "환영합니다",
-    "传图规则": "업로드 규칙"
+    "登录": "로그인",
+    "用户注册": "회원가입"
   },
   es: {
     "传照片": "Subir Fotos",
+    "传图规则": "Reglas de Subida",
     "给站长留言": "Dejar Mensaje",
-    "登录": "Iniciar Sesión",
-    "用户注册": "Registrarse",
     "退出登录": "Cerrar Sesión",
-    "欢迎你": "Bienvenido",
-    "传图规则": "Reglas de Subida"
+    "登录": "Iniciar Sesión",
+    "用户注册": "Registrarse"
   }
 };
 
-// 页面加载时自动应用语言
-document.addEventListener('DOMContentLoaded', function () {
-  const currentLang = localStorage.getItem('lang') || 'zh';
-  document.querySelectorAll('[i18n]').forEach(el => {
-    const key = el.getAttribute('i18n');
-    if (lang[currentLang] && lang[currentLang][key]) {
-      el.textContent = lang[currentLang][key];
-    }
-  });
+// 页面加载后执行
+window.onload = function() {
+  var navBar = document.getElementById('navBar');
+  var user = localStorage.getItem('currentUser');
+  var currentLang = localStorage.getItem('lang') || 'zh';
 
-  // 同步下拉框显示
-  const select = document.getElementById('langSwitch');
-  if (select) select.value = currentLang;
-});
+  // 翻译函数（兼容 IE11）
+  function t(key) {
+    return lang[currentLang] && lang[currentLang][key] ? lang[currentLang][key] : key;
+  }
 
-// 监听语言切换
-document.addEventListener('DOMContentLoaded', function () {
-  const select = document.getElementById('langSwitch');
-  if (!select) return;
-
-  select.addEventListener('change', function () {
-    const selected = this.value;
-    localStorage.setItem('lang', selected);
-    location.reload();
-  });
-});
-
+  if (user) {
+    navBar.innerHTML =
+      '<a href="upload.html" class="nav-btn" i18n="传照片">' + t("传照片") + '</a>' +
+      '<a href="rules.html" class="nav-btn" i18n="传图规则">' + t("传图规则") + '</a>' +
+      '<a href="feedback.html" class="nav-btn" i18n="给站长留言">' + t("给站长留言") + '</a>' +
+      '<a class="nav-btn welcome">欢迎你，' + user + '</a>' +
+      '<a href="javascript:logout()" class="nav-btn" i18n="退出登录">' + t("退出登录") + '</a>';
+  } else {
+    navBar.innerHTML =
+      '<a href="upload.html" class="nav-btn" i18n="传照片">' + t("传照片") + '</a>' +
+      '<a href="rules.html" class="nav-btn" i18n="传图规则">' + t("传图规则") + '</a>' +
+      '<a href="feedback.html" class="nav-btn" i18n="给站长留言">' + t("给站长留言") + '</a>' +
+      '<a href="login.html" class="nav-btn" i18n="登录">' + t("登录") + '</a>' +
+      '<a href="register.html" class="nav-btn" i18n="用户注册">' + t("用户注册") + '</a>';
+  }
+};
