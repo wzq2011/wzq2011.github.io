@@ -110,13 +110,14 @@
   <h1>WZQ Photos</h1>
   <div class="nav-buttons" id="navBar"></div>
 </div>
-<select id="langSwitch" onchange="localStorage.setItem('lang', this.value); location.reload()">
+<select onchange="localStorage.setItem('lang', this.value); location.reload();">
   <option value="zh">中文</option>
   <option value="en">English</option>
   <option value="ja">日本語</option>
   <option value="ko">한국어</option>
   <option value="es">Español</option>
 </select>
+
 
 
 <!-- 你原来的首页内容 全部还原 -->
@@ -140,12 +141,14 @@ window.onload = function() {
 
   if (user) {
     navBar.innerHTML = `
-      <a href="upload.html" class="nav-btn">传照片</a>
-      <a href="rules.html" class="nav-btn">传图规则</a>
-      <a href="feedback.html" class="nav-btn">给站长留言</a>
-      <a class="nav-btn welcome">欢迎你，${user}</a>
-      <a href="javascript:logout()" class="nav-btn">退出登录</a>
-    `;
+ navBar.innerHTML = `
+<a href="upload.html" class="nav-btn" i18n="传照片">传照片</a>
+<a href="rules.html" class="nav-btn" i18n="传图规则">传图规则</a>
+<a href="feedback.html" class="nav-btn" i18n="给站长留言">给站长留言</a>
+<a class="nav-btn welcome">欢迎你，${user}</a>
+<a href="javascript:logout()" class="nav-btn" i18n="退出登录">退出登录</a>
+`;
+
   } else {
     navBar.innerHTML = `
       <a href="upload.html" class="nav-btn">传照片</a>
