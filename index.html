@@ -110,13 +110,37 @@
   <h1>WZQ Photos</h1>
   <div class="nav-buttons" id="navBar"></div>
 </div>
-<select onchange="
-  localStorage.setItem('lang', this.value);
+<div style="display: flex; gap: 12px; font-size: 14px; margin: 0 10px;">
+  <span id="zhBtn" style="cursor: pointer; padding: 2px 6px; border-radius: 4px;">中文</span>
+  <span id="enBtn" style="cursor: pointer; padding: 2px 6px; border-radius: 4px;">English</span>
+</div>
+
+<script>
+const current = localStorage.getItem('lang') || 'zh';
+const zh = document.getElementById('zhBtn');
+const en = document.getElementById('enBtn');
+
+// 高亮当前语言
+if (current === 'zh') {
+  zh.style.fontWeight = 'bold';
+  zh.style.color = '#007bff';
+} else {
+  en.style.fontWeight = 'bold';
+  en.style.color = '#007bff';
+}
+
+// 点中文
+zh.onclick = () => {
+  localStorage.setItem('lang', 'zh');
   location.reload();
-">
-  <option value="zh">中文</option>
-  <option value="en">English</option>
-</select>
+};
+
+// 点英文
+en.onclick = () => {
+  localStorage.setItem('lang', 'en');
+  location.reload();
+};
+</script>
 
 <!-- 你原来的首页内容 全部还原 -->
 <div class="test-notice">
