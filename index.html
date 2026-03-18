@@ -1,3 +1,78 @@
+<!-- 首页虚化弹窗公告 -->
+<div id="popup" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+">
+  <div style="
+    width: 90%;
+    max-width: 600px;
+    background: #161A30;
+    color: #fff;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+  ">
+    <h2 style="margin: 0 0 10px 0; font-size: 24px;">欢迎来到 wzqphotos航空图库</h2>
+    <p style="font-size: 16px; margin: 0 0 20px; opacity: 0.9;">
+      网站预计于 <strong>2027年1月1日 10:00:00（UTC+8）</strong> 正式上线
+    </p>
+
+    <div id="countdown" style="
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 25px;
+    "></div>
+
+    <button onclick="document.getElementById('popup').style.display='none'" style="
+      padding: 12px 30px;
+      background: #38bdf8;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    ">关闭</button>
+  </div>
+</div>
+
+<script>
+function updateCountdown() {
+  const target = new Date('2027-01-01T10:00:00+08:00').getTime();
+  const now = new Date();
+  const utc8Now = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+  const diff = target - utc8Now.getTime();
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerText = '🎉 已正式上线！';
+    return;
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('countdown').innerText =
+    d + '天 ' + h + '时 ' + m + '分 ' + s + '秒';
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
